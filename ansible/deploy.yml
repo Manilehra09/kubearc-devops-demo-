@@ -1,0 +1,18 @@
+---
+- hosts: web
+  tasks:
+
+  - name: install docker
+    yum:
+      name: docker
+      state: present
+
+  - name: start docker
+    service:
+      name: docker
+      state: started
+
+  - name: copy website
+    copy:
+      src: ../index.html
+      dest: /usr/share/nginx/html/index.html
